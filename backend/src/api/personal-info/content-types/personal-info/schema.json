@@ -4,29 +4,36 @@
   "info": {
     "singularName": "personal-info",
     "pluralName": "personal-infos",
-    "displayName": "Personal Info"
+    "displayName": "Personal Info",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "first_name": {
+    "firstName": {
       "type": "string"
     },
-    "last_name": {
+    "lastName": {
       "type": "string"
     },
     "location": {
       "type": "string"
     },
-    "location_longitude": {
+    "locationLongitude": {
       "type": "string"
     },
-    "location_latitude": {
+    "locationLatitude": {
       "type": "string"
     },
-    "birth_year": {
+    "birthYear": {
       "type": "string"
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "longDescriptionMd": {
+      "type": "richtext"
     }
   }
 }

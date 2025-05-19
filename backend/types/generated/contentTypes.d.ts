@@ -465,6 +465,7 @@ export interface ApiJobExperienceJobExperience
           localized: true;
         };
       }>;
+    shortDescriptionMd: Schema.Attribute.String;
     startDate: Schema.Attribute.Date & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -514,6 +515,7 @@ export interface ApiLocalizationLocalization extends Struct.SingleTypeSchema {
 export interface ApiPersonalInfoPersonalInfo extends Struct.SingleTypeSchema {
   collectionName: 'personal_infos';
   info: {
+    description: '';
     displayName: 'Personal Info';
     pluralName: 'personal-infos';
     singularName: 'personal-info';
@@ -522,12 +524,12 @@ export interface ApiPersonalInfoPersonalInfo extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    birth_year: Schema.Attribute.String;
+    birthYear: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    first_name: Schema.Attribute.String;
-    last_name: Schema.Attribute.String;
+    firstName: Schema.Attribute.String;
+    lastName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -535,9 +537,11 @@ export interface ApiPersonalInfoPersonalInfo extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
-    location_latitude: Schema.Attribute.String;
-    location_longitude: Schema.Attribute.String;
+    locationLatitude: Schema.Attribute.String;
+    locationLongitude: Schema.Attribute.String;
+    longDescriptionMd: Schema.Attribute.RichText;
     publishedAt: Schema.Attribute.DateTime;
+    shortDescription: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
