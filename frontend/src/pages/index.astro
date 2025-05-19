@@ -2,6 +2,7 @@
 import Button from "../components/button.astro";
 import "../styles/global.css";
 import type { PersonalInfo } from "../types";
+import { marked } from "marked";
 
 const data: {
   personalInfo: PersonalInfo;
@@ -12,13 +13,27 @@ const data: {
     title: "Full-Stack Developer",
     short_description:
       "I'm a full-stack developer with a passion for building scalable and minimalistic user-friendly web applications.",
-    long_description:
-      "With over 5 years of experience in software development, I specialize in creating efficient, scalable web applications. My expertise spans both front-end and back-end development, with a strong focus on modern JavaScript frameworks and cloud technologies. I'm passionate about clean code, performance optimization, and creating intuitive user experiences. Whether it's architecting complex systems or fine-tuning user interfaces, I bring a detail-oriented and systematic approach to every project. I'm constantly learning and adapting to new technologies, believing that staying current is key to delivering the best solutions.",
+    long_description: `# Professional Experience
+
+With over 5 years of experience in software development, I specialize in creating efficient, scalable web applications.
+
+## Areas of Expertise
+My technical expertise spans across the full development stack, including extensive experience with front-end and back-end development. I work extensively with modern JavaScript frameworks and have deep knowledge of cloud technologies and infrastructure.
+
+## Development Philosophy
+My approach to development centers around writing clean, maintainable code while focusing on performance optimization. I'm dedicated to creating intuitive user experiences that delight end-users while maintaining robust and scalable backend systems.
+
+Whether it's architecting complex systems or fine-tuning user interfaces, I bring a detail-oriented and systematic approach to every project.
+
+## Continuous Growth
+I'm constantly learning and adapting to new technologies, believing that staying current is key to delivering the best solutions.`,
     location: "Žilina, Slovakia",
     locationLatitude: "49.2167",
     locationLongitude: "18.7167",
   },
 };
+
+const markdownString = marked.parse(data.personalInfo.long_description);
 ---
 
 <html lang="en">
@@ -62,6 +77,24 @@ const data: {
           </div>
         </div>
       </header>
+      <main class="flex-grow">
+        <section id="home" class="">
+          <!-- Scroll placeholder -->
+        </section>
+
+        <section id="about" class="section-padding">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">
+              A Little About Me
+            </h2>
+            <div
+              class="max-w-3xl mx-auto text-lg text-gray-700 space-y-6 leading-relaxed"
+            >
+              <article set:html={markdownString} />
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   </body>
 </html>
