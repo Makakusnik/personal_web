@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
+  --color-background: #ffffff;
+  --color-text: #1f2937;
+  --color-muted-text: #6b7280;
   --color-primary: #3b82f6;
   --color-primary-hover: #2563eb;
+  --color-secondary: #f3f4f6;
+  --color-border: #e5e7eb;
   --border-radius: 0.5rem;
   --font-sans:
     "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont",
@@ -89,4 +94,30 @@ html {
 .button-secondary:hover {
   background-color: var(--color-primary);
   color: white;
+}
+
+span.highlight {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.card {
+  background-color: var(--color-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  padding: 1.5rem;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+}
+
+.card.highlight {
+  border: 2px solid var(--color-primary);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 15px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
