@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "localizations",
+  "info": {
+    "singularName": "localization",
+    "pluralName": "localizations",
+    "displayName": "Localization",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "data": {
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    }
+  }
+}
