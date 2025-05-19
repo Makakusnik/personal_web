@@ -511,6 +511,39 @@ export interface ApiLocalizationLocalization extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPersonalInfoPersonalInfo extends Struct.SingleTypeSchema {
+  collectionName: 'personal_infos';
+  info: {
+    displayName: 'Personal Info';
+    pluralName: 'personal-infos';
+    singularName: 'personal-info';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    birth_year: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    first_name: Schema.Attribute.String;
+    last_name: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::personal-info.personal-info'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.String;
+    location_latitude: Schema.Attribute.String;
+    location_longitude: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   collectionName: 'projects';
   info: {
@@ -1132,6 +1165,7 @@ declare module '@strapi/strapi' {
       'api::contact.contact': ApiContactContact;
       'api::job-experience.job-experience': ApiJobExperienceJobExperience;
       'api::localization.localization': ApiLocalizationLocalization;
+      'api::personal-info.personal-info': ApiPersonalInfoPersonalInfo;
       'api::project.project': ApiProjectProject;
       'api::skill.skill': ApiSkillSkill;
       'plugin::content-releases.release': PluginContentReleasesRelease;

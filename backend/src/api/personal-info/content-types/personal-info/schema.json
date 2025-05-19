@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "personal_infos",
+  "info": {
+    "singularName": "personal-info",
+    "pluralName": "personal-infos",
+    "displayName": "Personal Info"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "location_longitude": {
+      "type": "string"
+    },
+    "location_latitude": {
+      "type": "string"
+    },
+    "birth_year": {
+      "type": "string"
+    }
+  }
+}
