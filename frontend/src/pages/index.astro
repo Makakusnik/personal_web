@@ -1,19 +1,67 @@
 ---
+import Button from "../components/button.astro";
 import "../styles/global.css";
+import type { PersonalInfo } from "../types";
 
+const data: {
+  personalInfo: PersonalInfo;
+} = {
+  personalInfo: {
+    firstName: "Marek",
+    lastName: "Fodor",
+    title: "Full-Stack Developer",
+    short_description:
+      "I'm a full-stack developer with a passion for building scalable and minimalistic user-friendly web applications.",
+    long_description:
+      "With over 5 years of experience in software development, I specialize in creating efficient, scalable web applications. My expertise spans both front-end and back-end development, with a strong focus on modern JavaScript frameworks and cloud technologies. I'm passionate about clean code, performance optimization, and creating intuitive user experiences. Whether it's architecting complex systems or fine-tuning user interfaces, I bring a detail-oriented and systematic approach to every project. I'm constantly learning and adapting to new technologies, believing that staying current is key to delivering the best solutions.",
+    location: "Žilina, Slovakia",
+    locationLatitude: "49.2167",
+    locationLongitude: "18.7167",
+  },
+};
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body class="antialiased">
+    <div class="flex flex-col min-h-screen">
+      <header
+        class="bg-secondary section-padding flex items-center min-h-[calc(100vh-5rem)]"
+      >
+        <div
+          class="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left"
+        >
+          <h1
+            class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6"
+          >
+            Hi, I'm <span class="text-primary"
+              >{data.personalInfo.firstName}</span
+            >.
+          </h1>
+          <p
+            class="text-2xl md:text-3xl text-muted-text mb-8 max-w-3xl mx-auto md:mx-0"
+          >
+            {data.personalInfo.title}
+          </p>
+          <p class="text-lg text-gray-700 mb-10 max-w-2xl mx-auto md:mx-0">
+            {data.personalInfo.short_description}
+          </p>
+          <div
+            class="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col sm:flex-row sm:justify-center md:justify-start"
+          >
+            <Button href="#projects" as="a"> View My Work </Button>
+            <Button href="#contact" as="a" variant="secondary">
+              Let's Connect
+            </Button>
+          </div>
+        </div>
+      </header>
+    </div>
+  </body>
 </html>
