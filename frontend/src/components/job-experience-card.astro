@@ -1,0 +1,46 @@
+---
+import { marked } from "marked";
+import type { JobExperience } from "../types";
+
+interface Props extends Omit<JobExperience, "startDate" | "endDate" | "role"> {
+  startDate: string;
+  endDate: string;
+}
+
+const {
+  roleFullText,
+  companyFullName,
+  company,
+  startDate,
+  endDate,
+  isCurrentJob,
+  shortDescriptionMd,
+} = Astro.props;
+---
+
+<div class:list={["card", isCurrentJob && "highlight"]}>
+  <h3 class="text-2xl font-semibold text-primary mb-1">
+    {roleFullText}
+  </h3>
+  <p class="text-md text-muted-text mb-2">
+    <span class="font-semibold" title={companyFullName}>
+      {company}
+    </span>
+    | {startDate} -
+    {
+      isCurrentJob ? (
+        <span class:list={[isCurrentJob && "highlight"]}>{endDate}</span>
+      ) : (
+        endDate
+      )
+    }
+  </p>
+  {
+    roleFullText && (
+      <div
+        class="prose prose-sm text-gray-700 space-y-1"
+        set:html={marked.parse(shortDescriptionMd ?? "")}
+      />
+    )
+  }
+</div>
