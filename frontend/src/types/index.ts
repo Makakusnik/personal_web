@@ -4,10 +4,13 @@ export interface Contact {
   hrefValue: string;
 }
 
+export type JobRole = "fe" | "be" | "fe/be";
+
 export interface JobExperience {
   company: string;
-  role: string;
+  role: JobRole;
   isCurrentJob: boolean;
+  shortDescriptionMd: string;
   startDate: Date;
   endDate?: Date;
   companyFullName: string;
@@ -35,8 +38,8 @@ export interface PersonalInfo {
   firstName: string;
   lastName: string;
   title: string;
-  short_description: string;
-  long_description: string;
+  shortDescription: string;
+  longDescriptionMd: string;
   location: string;
   locationLatitude: string;
   locationLongitude: string;

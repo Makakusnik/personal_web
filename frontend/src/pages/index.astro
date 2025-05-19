@@ -11,9 +11,9 @@ const data: {
     firstName: "Marek",
     lastName: "Fodor",
     title: "Full-Stack Developer",
-    short_description:
+    shortDescription:
       "I'm a full-stack developer with a passion for building scalable and minimalistic user-friendly web applications.",
-    long_description: `# Professional Experience
+    longDescriptionMd: `# Professional Experience
 
 With over 5 years of experience in software development, I specialize in creating efficient, scalable web applications.
 
@@ -33,7 +33,7 @@ I'm constantly learning and adapting to new technologies, believing that staying
   },
 };
 
-const markdownString = marked.parse(data.personalInfo.long_description);
+const markdownString = marked.parse(data.personalInfo.longDescriptionMd);
 ---
 
 <html lang="en">
@@ -65,7 +65,7 @@ const markdownString = marked.parse(data.personalInfo.long_description);
             {data.personalInfo.title}
           </p>
           <p class="text-lg text-gray-700 mb-10 max-w-2xl mx-auto md:mx-0">
-            {data.personalInfo.short_description}
+            {data.personalInfo.shortDescription}
           </p>
           <div
             class="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col sm:flex-row sm:justify-center md:justify-start"
