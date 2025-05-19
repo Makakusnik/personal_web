@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  skillName: string;
+  iconName: string;
+}
+
+const { skillName, iconName }: Props = Astro.props;
+---
+
+<span class="flex flex-col items-center gap-2 flex-1">
+  <span class="skill-badge">
+    <Icon name={iconName} class="size-8" />
+  </span>
+  <p>{skillName}</p>
+</span>

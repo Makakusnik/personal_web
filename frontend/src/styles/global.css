@@ -131,3 +131,24 @@ span.highlight {
     0 15px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
+
+.skill-badge {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  padding: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+.skill-badge:hover {
+  background-color: var(--color-background-secondary);
+  color: var(--color-primary-hover);
+}
