@@ -452,12 +452,12 @@ export interface ApiJobExperienceJobExperience
       Schema.Attribute.Required;
     roleFullText: Schema.Attribute.Enumeration<
       [
-        'Frontend v\u00FDvoj\u00E1r.',
-        'Backend v\u00FDvoj\u00E1r.',
-        'Fullstack v\u00FDvoj\u00E1r.',
-        'Frontend developer.',
-        'Backend developer.',
-        'Fullstack developer.',
+        'Frontend v\u00FDvoj\u00E1r',
+        'Backend v\u00FDvoj\u00E1r',
+        'Fullstack v\u00FDvoj\u00E1r',
+        'Frontend developer',
+        'Backend developer',
+        'Fullstack developer',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -465,7 +465,7 @@ export interface ApiJobExperienceJobExperience
           localized: true;
         };
       }>;
-    shortDescriptionMd: Schema.Attribute.String;
+    shortDescriptionMd: Schema.Attribute.RichText;
     startDate: Schema.Attribute.Date & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
