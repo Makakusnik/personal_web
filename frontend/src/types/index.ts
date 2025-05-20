@@ -17,16 +17,16 @@ export interface JobExperience {
   roleFullText: string;
 }
 
-export type ProjectState = "Completed" | "In Progress" | "Planned";
+export type ProjectState = "online" | "in-progress" | "offline";
 
 export interface Project {
-  nameShort: string;
-  nameFull: string;
+  name: string;
+  type: string;
+  shortDescription: string;
   url: string;
   state: ProjectState;
-  description: string;
-  technologies: string[];
-  imageUrl: string;
+  longDescriptionMd: string;
+  imagePath: string;
 }
 
 export interface Skill {
