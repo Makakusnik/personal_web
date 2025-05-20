@@ -1,12 +1,13 @@
 ---
 import Button from "../components/button.astro";
 import "../styles/global.css";
-import type { PersonalInfo, JobExperience, Skill } from "../types";
+import type { PersonalInfo, JobExperience, Skill, Project } from "../types";
 import { marked } from "marked";
 import { strapiFetch } from "../utils/fetching";
 import JobExperienceCard from "../components/job-experience-card.astro";
 import { formatDate } from "../utils/date";
 import SkillBadge from "../components/skill-badge.astro";
+import { getMarkdownParser } from "@/utils/markdownParser";
 
 const data: {
   personalInfo: PersonalInfo;
@@ -37,13 +38,27 @@ I'm constantly learning and adapting to new technologies, believing that staying
   },
 };
 
-const markdownString = marked.parse(data.personalInfo.longDescriptionMd);
+const markdownParser = getMarkdownParser();
+
+const markdownString = markdownParser.parse(
+  data.personalInfo.longDescriptionMd,
+);
 
 const { data: jobExperienceData } = await strapiFetch<JobExperience>(
   `/job-experiences?populate=*&sort=startDate:asc&locale=${"sk"}`,
 );
 
 const { data: skillData } = await strapiFetch<Skill>(`/skills`);
+
+const { data: projectData } =
+  await strapiFetch<Project>(`/projects?populate=*`);
+
+const parsedProjectData = await Promise.all(
+  projectData?.map(async (project) => ({
+    ...project,
+    longDescriptionMd: await markdownParser.parse(project.longDescriptionMd),
+  })),
+);
 ---
 
 <html lang="en">
