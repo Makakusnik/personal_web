@@ -25,10 +25,3 @@ export const strapiFetch = async <T>(
     throw new Error("strapiFetch function error!");
   }
 };
-
-/**
- * @param url Must start with a forward slash (e.g. "/uploads/image.jpg")
- */
-export const buildStrapiImageUrl = (url: string) => {
-  return `${import.meta.env.STRAPI_API_HOSTNAME}:${import.meta.env.STRAPI_API_PORT}${url}`;
-};
