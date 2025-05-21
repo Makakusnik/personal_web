@@ -14,43 +14,33 @@ export default function TableOfContents() {
   ];
 
   useEffect(() => {
-    // Set the first section as active by default
     if (sections.length > 0 && !activeSection) {
       setActiveSection(sections[0].id);
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Get all entries that are currently intersecting
         const intersectingEntries = entries.filter(
           (entry) => entry.isIntersecting,
         );
 
-        // If we have intersecting entries, update the active section to the first one
         if (intersectingEntries.length > 0) {
-          // Sort by their position in the DOM (top to bottom)
           intersectingEntries.sort((a, b) => {
             const aRect = a.target.getBoundingClientRect();
             const bRect = b.target.getBoundingClientRect();
             return aRect.top - bRect.top;
           });
 
-          // Set the topmost visible section as active
           setActiveSection(intersectingEntries[0].target.id);
-        }
-        // If no entries are intersecting and we're dealing with a section leaving the viewport
-        else if (entries.length === 1 && !entries[0].isIntersecting) {
+        } else if (entries.length === 1 && !entries[0].isIntersecting) {
           const leavingSection = entries[0].target;
           const leavingSectionRect = leavingSection.getBoundingClientRect();
 
-          // If section is exiting through the top of the viewport, find the next section
           if (leavingSectionRect.top < 0) {
-            // Find the index of the section that's leaving
             const leavingSectionIndex = sections.findIndex(
               (section) => section.id === leavingSection.id,
             );
 
-            // If there's a section after this one, make it active
             if (leavingSectionIndex < sections.length - 1) {
               setActiveSection(sections[leavingSectionIndex + 1].id);
             }
@@ -58,7 +48,6 @@ export default function TableOfContents() {
         }
       },
       {
-        // Simple rootMargin that works well for most content
         rootMargin: "-10% 0px -70% 0px",
         threshold: 0.1,
       },
