@@ -1,9 +1,9 @@
 import type { StrapiResponse } from "../types/api";
 
-export const strapiFetch = async <T>(
+export const strapiFetch = async <T, IsArray extends boolean = true>(
   address: string,
   requestInit?: RequestInit,
-): Promise<StrapiResponse<T>> => {
+): Promise<StrapiResponse<T, IsArray>> => {
   try {
     const responseRaw = await fetch(
       `${import.meta.env.STRAPI_API_HOSTNAME}${import.meta.env.STRAPI_API_PORT ? `:${import.meta.env.STRAPI_API_PORT}` : ""}${import.meta.env.STRAPI_API_PREFIX ? `/${import.meta.env.STRAPI_API_PREFIX}` : ""}${address}`,

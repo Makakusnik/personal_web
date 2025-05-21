@@ -1,5 +1,5 @@
-export interface StrapiResponse<T> {
-  data: T[];
+export interface StrapiResponse<T, IsArray extends boolean = true> {
+  data: IsArray extends true ? T[] : T;
   meta: {
     pagination: {
       page: number;
