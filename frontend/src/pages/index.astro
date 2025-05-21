@@ -1,12 +1,14 @@
 ---
-import Button from "../components/button.astro";
-import "../styles/global.css";
-import type { PersonalInfo, JobExperience, Skill, Project } from "../types";
-import { marked } from "marked";
-import { strapiFetch } from "../utils/fetching";
-import JobExperienceCard from "../components/job-experience-card.astro";
-import { formatDate } from "../utils/date";
-import SkillBadge from "../components/skill-badge.astro";
+import Button from "@/components/button.astro";
+import "@/styles/global.css";
+import type { PersonalInfo, JobExperience, Skill, Project } from "@/types";
+import { strapiFetch } from "@/utils/fetching";
+import JobExperienceCard from "@/components/job-experience-card.astro";
+import { formatDate } from "@/utils/date";
+import SkillBadge from "@/components/skill-badge.astro";
+import ProjectCard from "@/components/project/project-card.astro";
+import ProjectModal from "@/components/project/project-modal";
+import { buildImageUrl } from "@/utils/images";
 import { getMarkdownParser } from "@/utils/markdownParser";
 
 const data: {
@@ -50,8 +52,9 @@ const { data: jobExperienceData } = await strapiFetch<JobExperience>(
 
 const { data: skillData } = await strapiFetch<Skill>(`/skills`);
 
-const { data: projectData } =
-  await strapiFetch<Project>(`/projects?populate=*`);
+const { data: projectData } = await strapiFetch<Project>(
+  `/projects?populate[projectPlatforms][populate][platform]=*&populate[skills]=*`,
+);
 
 const parsedProjectData = await Promise.all(
   projectData?.map(async (project) => ({
@@ -162,6 +165,39 @@ const parsedProjectData = await Promise.all(
             <p class="text-center mt-8 text-muted-text">
               ...and always eager to learn more!
             </p>
+          </div>
+        </section>
+
+        <section id="projects" class="bg-secondary section-padding">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">
+              Featured Projects
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {
+                parsedProjectData &&
+                  parsedProjectData.map((project, index) => (
+                    <ProjectCard
+                      project={{
+                        ...project,
+                        imagePath: project.imagePath
+                          ? buildImageUrl(`${project.imagePath}_preview.webp`)
+                          : buildImageUrl("under_construction_preview.webp"),
+                      }}
+                    >
+                      <ProjectModal
+                        client:load
+                        project={{
+                          ...project,
+                          imagePath: project.imagePath
+                            ? buildImageUrl(`${project.imagePath}_full.webp`)
+                            : buildImageUrl("under_construction_full.webp"),
+                        }}
+                      />
+                    </ProjectCard>
+                  ))
+              }
+            </div>
           </div>
         </section>
       </main>
