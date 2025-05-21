@@ -17,13 +17,30 @@ export interface JobExperience {
   roleFullText: string;
 }
 
+export type Platform = {
+  name: string;
+  iconName: string;
+  label: string;
+};
+
+export type ProjectPlatform = {
+  url: string;
+  platform: Platform;
+};
+
 export type ProjectState = "online" | "in-progress" | "offline";
 
 export interface Project {
   name: string;
   type: string;
+  opensource: boolean;
   shortDescription: string;
-  url: string;
+  skills: Skill[];
+  license: string;
+  launched: Date;
+  languagesSupported: string;
+  projectPlatforms: ProjectPlatform[];
+  githubUrl?: string;
   state: ProjectState;
   longDescriptionMd: string;
   imagePath: string;
