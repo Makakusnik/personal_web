@@ -47,7 +47,7 @@ const markdownString = markdownParser.parse(
 );
 
 const { data: jobExperienceData } = await strapiFetch<JobExperience>(
-  `/job-experiences?populate=*&sort=startDate:asc&locale=${"sk"}`,
+  `/job-experiences?populate=*&sort=startDate:asc`,
 );
 
 const { data: skillData } = await strapiFetch<Skill>(`/skills`);
@@ -75,7 +75,7 @@ const parsedProjectData = await Promise.all(
   <body class="antialiased">
     <div class="flex flex-col min-h-screen">
       <header
-        class="bg-secondary section-padding flex items-center min-h-[calc(100vh-5rem)]"
+        class="section-padding flex items-center min-h-[calc(100vh-5rem)]"
       >
         <div
           class="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left"
@@ -122,7 +122,7 @@ const parsedProjectData = await Promise.all(
             </div>
           </div>
         </section>
-        <section id="experience" class="bg-secondary section-padding">
+        <section id="experience" class="section-padding">
           <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-12">
               My Professional Journey
@@ -168,7 +168,7 @@ const parsedProjectData = await Promise.all(
           </div>
         </section>
 
-        <section id="projects" class="bg-secondary section-padding">
+        <section id="projects" class="section-padding">
           <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-12">
               Featured Projects
