@@ -10,6 +10,7 @@ import ProjectCard from "@/components/project/project-card.astro";
 import ProjectModal from "@/components/project/project-modal";
 import { buildImageUrl } from "@/utils/images";
 import { getMarkdownParser } from "@/utils/markdownParser";
+import TableOfContents from "@/components/TableOfContents";
 
 const markdownParser = getMarkdownParser();
 
@@ -46,6 +47,7 @@ const parsedProjectData = await Promise.all(
     <title>Astro</title>
   </head>
   <body class="antialiased">
+    <TableOfContents client:load />
     <div class="flex flex-col min-h-screen">
       <header
         id="intro"
