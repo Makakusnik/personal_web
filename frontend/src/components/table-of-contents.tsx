@@ -67,7 +67,7 @@ export default function TableOfContents() {
   }, [sections, activeSection]);
 
   return (
-    <div className="fixed top-8 right-8 z-50 hidden md:block">
+    <div className="fixed top-8 right-8 hidden md:block">
       <div className="bg-white/40 backdrop-blur-sm p-6 rounded-lg min-w-[240px]">
         <ul className="space-y-4">
           {sections.map(({ id, title }) => (

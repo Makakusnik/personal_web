@@ -128,7 +128,7 @@ html {
 }
 
 .button-secondary {
-  background-color: transparent;
+  background-color: white;
   color: var(--color-primary);
   border: 1px solid var(--color-primary);
   padding: 0.75rem 1.5rem;

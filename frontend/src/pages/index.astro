@@ -48,203 +48,209 @@ const parsedProjectData = await Promise.all(
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body class="antialiased">
-    <TableOfContents client:load />
+  <body class="antialiased isolate">
+    <span class="relative z-50">
+      <TableOfContents client:load />
+    </span>
     <div class="flex flex-col min-h-screen">
       <header
         id="intro"
-        class="section-padding flex items-center min-h-[calc(100vh-5rem)] relative overflow-hidden"
+        class="section-padding flex items-center min-h-[calc(100vh-5rem)] relative overflow-hidden isolate"
       >
         <GridPattern
           width={80}
           height={80}
           x={-1}
           y={-1}
-          className="stroke-gray-900/10 fill-gray-900/10 dark:stroke-white/10 dark:fill-white/10 [mask-image:radial-gradient(ellipse_at_center,white_40%,transparent_75%)]"
+          className="stroke-gray-900/10 fill-gray-900/10 dark:stroke-white/10 dark:fill-white/10 [mask-image:radial-gradient(ellipse_at_center,white_40%,transparent_75%)] -z-10"
           client:idle
         />
         <div
-          class="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left"
+          class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
         >
-          <h1
-            class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6"
-          >
-            Hi, I'm <span class="text-primary"
-              >{personalInfoData.firstName}</span
-            >.
-          </h1>
-          <p
-            class="text-2xl md:text-3xl text-muted-text mb-8 max-w-3xl mx-auto md:mx-0"
-          >
-            {personalInfoData.title}
-          </p>
-          <p class="text-lg text-gray-700 mb-10 max-w-2xl mx-auto md:mx-0">
-            {personalInfoData.shortDescription}
-          </p>
-          <div
-            class="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col sm:flex-row sm:justify-center md:justify-start"
-          >
-            <Button href="#projects" as="a"> View My Work </Button>
-            <Button href="#contact" as="a" variant="secondary">
-              Let's Connect
-            </Button>
+          <div class="mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <h1
+              class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6"
+            >
+              Hi, I'm <span class="text-primary"
+                >{personalInfoData.firstName}</span
+              >.
+            </h1>
+            <p
+              class="text-2xl md:text-3xl text-muted-text mb-8 max-w-3xl mx-auto md:mx-0"
+            >
+              {personalInfoData.title}
+            </p>
+            <p class="text-lg text-gray-700 mb-10 max-w-2xl mx-auto md:mx-0">
+              {personalInfoData.shortDescription}
+            </p>
+            <div
+              class="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col sm:flex-row sm:justify-center md:justify-start"
+            >
+              <Button href="#projects" as="a"> View My Work </Button>
+              <Button href="#contact" as="a" variant="secondary">
+                Let's Connect
+              </Button>
+            </div>
           </div>
-        </div>
-        <div>
-          <img src="/images/marek.webp" alt="Profile" />
+          <div>
+            <img src="/images/marek.webp" alt="Profile" />
+          </div>
         </div>
       </header>
-    </div>
-    <main class="flex-grow">
-      <section id="about" class="section-padding">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-4xl font-bold text-center mb-12">
-            A Little About Me
-          </h2>
-          <div
-            class="max-w-3xl mx-auto text-lg text-gray-700 space-y-6 leading-relaxed"
-          >
-            <article set:html={markdownString} />
+      <main class="flex-grow">
+        <section id="about" class="section-padding">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">
+              A Little About Me
+            </h2>
+            <div
+              class="max-w-3xl mx-auto text-lg text-gray-700 space-y-6 leading-relaxed"
+            >
+              <article set:html={markdownString} />
+            </div>
           </div>
-        </div>
-      </section>
-      <section id="experience" class="section-padding">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-4xl font-bold text-center mb-12">
-            My Professional Journey
-          </h2>
-          <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {
-              jobExperienceData &&
-                jobExperienceData.map((job) => (
-                  <JobExperienceCard
-                    roleFullText={job.roleFullText}
-                    companyFullName={job.companyFullName}
-                    company={job.company}
-                    startDate={formatDate(job.startDate)}
-                    endDate={job.endDate ? formatDate(job.endDate) : "Present"}
-                    isCurrentJob={job.isCurrentJob}
-                    shortDescriptionMd={job.shortDescriptionMd}
+        </section>
+        <section id="experience" class="section-padding">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">
+              My Professional Journey
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {
+                jobExperienceData &&
+                  jobExperienceData.map((job) => (
+                    <JobExperienceCard
+                      roleFullText={job.roleFullText}
+                      companyFullName={job.companyFullName}
+                      company={job.company}
+                      startDate={formatDate(job.startDate)}
+                      endDate={
+                        job.endDate ? formatDate(job.endDate) : "Present"
+                      }
+                      isCurrentJob={job.isCurrentJob}
+                      shortDescriptionMd={job.shortDescriptionMd}
+                    />
+                  ))
+              }
+            </div>
+          </div>
+        </section>
+        <section id="skills" class="section-padding">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">
+              Core Competencies
+            </h2>
+            <div class="flex flex-wrap justify-center gap-4 max-w-2xl mx-auto">
+              {
+                skillData.map((skill) => (
+                  <SkillBadge
+                    skillName={skill.skillName}
+                    iconName={skill.iconName}
                   />
                 ))
-            }
+              }
+            </div>
+            <p class="text-center mt-8 text-muted-text">
+              ...and always eager to learn more!
+            </p>
           </div>
-        </div>
-      </section>
-      <section id="skills" class="section-padding">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-4xl font-bold text-center mb-12">
-            Core Competencies
-          </h2>
-          <div class="flex flex-wrap justify-center gap-4 max-w-2xl mx-auto">
-            {
-              skillData.map((skill) => (
-                <SkillBadge
-                  skillName={skill.skillName}
-                  iconName={skill.iconName}
-                />
-              ))
-            }
-          </div>
-          <p class="text-center mt-8 text-muted-text">
-            ...and always eager to learn more!
-          </p>
-        </div>
-      </section>
+        </section>
 
-      <section id="projects" class="section-padding">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-4xl font-bold text-center mb-12">
-            Featured Projects
-          </h2>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {
-              parsedProjectData &&
-                parsedProjectData.map((project, index) => (
-                  <ProjectCard
-                    project={{
-                      ...project,
-                      imagePath: project.imagePath
-                        ? buildImageUrl(`${project.imagePath}_preview.webp`)
-                        : buildImageUrl("under_construction_preview.webp"),
-                    }}
-                  >
-                    <ProjectModal
-                      client:load
+        <section id="projects" class="section-padding">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">
+              Featured Projects
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {
+                parsedProjectData &&
+                  parsedProjectData.map((project, index) => (
+                    <ProjectCard
                       project={{
                         ...project,
                         imagePath: project.imagePath
-                          ? buildImageUrl(`${project.imagePath}_full.webp`)
-                          : buildImageUrl("under_construction_full.webp"),
+                          ? buildImageUrl(`${project.imagePath}_preview.webp`)
+                          : buildImageUrl("under_construction_preview.webp"),
                       }}
-                    />
-                  </ProjectCard>
-                ))
-            }
+                    >
+                      <ProjectModal
+                        client:load
+                        project={{
+                          ...project,
+                          imagePath: project.imagePath
+                            ? buildImageUrl(`${project.imagePath}_full.webp`)
+                            : buildImageUrl("under_construction_full.webp"),
+                        }}
+                      />
+                    </ProjectCard>
+                  ))
+              }
+            </div>
           </div>
-        </div>
-      </section>
-      <section id="contact" class="section-padding">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-4xl font-bold text-center mb-12">
-            Let's Get In Touch
-          </h2>
-          <div
-            class="max-w-lg mx-auto card hover:transform-none! !shadow-none border border-border p-6 md:p-8"
-          >
-            <p class="text-center text-muted-text mb-8">
-              Have a project in mind, a question, or just want to say hi? Fill
-              out the form below or reach out via my socials.
-            </p>
-            <ContactForm client:load />
-            <div class="mt-10 text-center">
-              <p class="text-muted-text mb-2">Or find me on:</p>
-              <div class="flex justify-center space-x-4">
-                <a
-                  href="#"
-                  class="text-primary hover:text-primary-hover transition-colors"
-                  >LinkedIn</a
-                >
-                <a
-                  href="#"
-                  class="text-primary hover:text-primary-hover transition-colors"
-                  >GitHub</a
-                >
-                <a
-                  href="#"
-                  class="text-primary hover:text-primary-hover transition-colors"
-                  >Twitter (X)</a
-                >
+        </section>
+        <section id="contact" class="section-padding">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">
+              Let's Get In Touch
+            </h2>
+            <div
+              class="max-w-lg mx-auto card hover:transform-none! !shadow-none border border-border p-6 md:p-8"
+            >
+              <p class="text-center text-muted-text mb-8">
+                Have a project in mind, a question, or just want to say hi? Fill
+                out the form below or reach out via my socials.
+              </p>
+              <ContactForm client:load />
+              <div class="mt-10 text-center">
+                <p class="text-muted-text mb-2">Or find me on:</p>
+                <div class="flex justify-center space-x-4">
+                  <a
+                    href="#"
+                    class="text-primary hover:text-primary-hover transition-colors"
+                    >LinkedIn</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary hover:text-primary-hover transition-colors"
+                    >GitHub</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary hover:text-primary-hover transition-colors"
+                    >Twitter (X)</a
+                  >
+                </div>
               </div>
             </div>
           </div>
+        </section>
+      </main>
+      <footer class="py-8 border-t border-border bg-secondary">
+        <div
+          class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-muted-text"
+        >
+          <p class="font-semibold">
+            &copy; {new Date().getFullYear()}
+            {personalInfoData.firstName}
+            {personalInfoData.lastName}. All rights reserved.
+          </p>
+          <p class="text-sm mt-1">
+            Built with <a
+              href="https://astro.build/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline">Astro</a
+            >,
+            <a
+              href="https://react.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline">React</a
+            > & ❤️
+          </p>
         </div>
-      </section>
-    </main>
-    <footer class="py-8 border-t border-border bg-secondary">
-      <div
-        class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-muted-text"
-      >
-        <p class="font-semibold">
-          &copy; {new Date().getFullYear()}
-          {personalInfoData.firstName}
-          {personalInfoData.lastName}. All rights reserved.
-        </p>
-        <p class="text-sm mt-1">
-          Built with <a
-            href="https://astro.build/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-primary hover:underline">Astro</a
-          >,
-          <a
-            href="https://react.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-primary hover:underline">React</a
-          > & ❤️
-        </p>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>
