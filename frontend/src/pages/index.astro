@@ -11,6 +11,7 @@ import ProjectModal from "@/components/project/project-modal";
 import { buildImageUrl } from "@/utils/images";
 import { getMarkdownParser } from "@/utils/markdownParser";
 import TableOfContents from "@/components/TableOfContents";
+import { GridPattern } from "@/components/ui/grid-pattern";
 
 const markdownParser = getMarkdownParser();
 
@@ -51,8 +52,16 @@ const parsedProjectData = await Promise.all(
     <div class="flex flex-col min-h-screen">
       <header
         id="intro"
-        class="section-padding flex items-center min-h-[calc(100vh-5rem)]"
+        class="section-padding flex items-center min-h-[calc(100vh-5rem)] relative overflow-hidden"
       >
+        <GridPattern
+          width={80}
+          height={80}
+          x={-1}
+          y={-1}
+          className="stroke-gray-900/10 fill-gray-900/10 dark:stroke-white/10 dark:fill-white/10 [mask-image:radial-gradient(ellipse_at_center,white_40%,transparent_75%)]"
+          client:idle
+        />
         <div
           class="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left"
         >
