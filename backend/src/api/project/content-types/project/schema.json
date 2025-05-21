@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "nameShort": {
+    "name": {
       "type": "string",
       "required": true,
       "pluginOptions": {
@@ -25,39 +25,12 @@
         }
       }
     },
-    "nameFull": {
+    "shortDescription": {
       "type": "string",
       "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
-        }
-      }
-    },
-    "uvPerWeek": {
-      "type": "integer",
-      "required": false,
-      "min": 0,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
-    "pvPerWeek": {
-      "type": "integer",
-      "min": 0,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
-    "url": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
         }
       }
     },
@@ -74,6 +47,40 @@
           "localized": false
         }
       }
+    },
+    "longDescriptionMd": {
+      "type": "richtext"
+    },
+    "type": {
+      "type": "string"
+    },
+    "imagePath": {
+      "type": "string"
+    },
+    "skills": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::skill.skill"
+    },
+    "opensource": {
+      "type": "boolean"
+    },
+    "license": {
+      "type": "string"
+    },
+    "languagesSupported": {
+      "type": "string"
+    },
+    "launched": {
+      "type": "date"
+    },
+    "githubUrl": {
+      "type": "string"
+    },
+    "projectPlatforms": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project-platform.project-platform"
     }
   }
 }

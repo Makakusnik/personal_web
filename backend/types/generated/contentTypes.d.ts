@@ -548,6 +548,67 @@ export interface ApiPersonalInfoPersonalInfo extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPlatformPlatform extends Struct.CollectionTypeSchema {
+  collectionName: 'platforms';
+  info: {
+    description: '';
+    displayName: 'platform';
+    pluralName: 'platforms';
+    singularName: 'platform';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    iconName: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::platform.platform'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProjectPlatformProjectPlatform
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'project_platforms';
+  info: {
+    displayName: 'ProjectPlatform';
+    pluralName: 'project-platforms';
+    singularName: 'project-platform';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project-platform.project-platform'
+    > &
+      Schema.Attribute.Private;
+    platform: Schema.Attribute.Relation<'oneToOne', 'api::platform.platform'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   collectionName: 'projects';
   info: {
@@ -568,38 +629,38 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    githubUrl: Schema.Attribute.String;
+    imagePath: Schema.Attribute.String;
+    languagesSupported: Schema.Attribute.String;
+    launched: Schema.Attribute.Date;
+    license: Schema.Attribute.String;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::project.project'
     >;
-    nameFull: Schema.Attribute.String &
+    longDescriptionMd: Schema.Attribute.RichText;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    opensource: Schema.Attribute.Boolean;
+    projectPlatforms: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project-platform.project-platform'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    shortDescription: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    nameShort: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    pvPerWeek: Schema.Attribute.Integer &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }> &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
+    skills: Schema.Attribute.Relation<'oneToMany', 'api::skill.skill'>;
     state: Schema.Attribute.Enumeration<['online', 'offline', 'in-progress']> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -607,27 +668,10 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    type: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    url: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    uvPerWeek: Schema.Attribute.Integer &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }> &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
   };
 }
 
@@ -1170,6 +1214,8 @@ declare module '@strapi/strapi' {
       'api::job-experience.job-experience': ApiJobExperienceJobExperience;
       'api::localization.localization': ApiLocalizationLocalization;
       'api::personal-info.personal-info': ApiPersonalInfoPersonalInfo;
+      'api::platform.platform': ApiPlatformPlatform;
+      'api::project-platform.project-platform': ApiProjectPlatformProjectPlatform;
       'api::project.project': ApiProjectProject;
       'api::skill.skill': ApiSkillSkill;
       'plugin::content-releases.release': PluginContentReleasesRelease;
