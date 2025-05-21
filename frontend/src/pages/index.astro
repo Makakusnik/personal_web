@@ -171,6 +171,32 @@ const parsedProjectData = await Promise.all(
           </div>
         </section>
       </main>
+
+      <footer class="py-8 border-t border-border bg-secondary">
+        <div
+          class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-muted-text"
+        >
+          <p class="font-semibold">
+            &copy; {new Date().getFullYear()}
+            {personalInfoData.firstName}
+            {personalInfoData.lastName}. All rights reserved.
+          </p>
+          <p class="text-sm mt-1">
+            Built with <a
+              href="https://astro.build/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline">Astro</a
+            >,
+            <a
+              href="https://react.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline">React</a
+            > & ❤️
+          </p>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
