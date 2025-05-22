@@ -18,14 +18,16 @@ export const ProjectModalButtons = ({
       {opensource && githubUrl && (
         <div className="pm-button-row">
           <a
-            className={cn("button-secondary flex-center w-full cursor-pointer")}
+            className={cn(
+              "button-secondary flex items-center justify-center w-full cursor-pointer",
+            )}
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
             <span className="pm-button-link-content">
               <span>View Repository</span>
-              <Icon className="pm-button-icon-2xl" icon="mdi:github" />
+              <Icon className="text-2xl" icon="mdi:github" />
             </span>
           </a>
         </div>
@@ -35,18 +37,21 @@ export const ProjectModalButtons = ({
           {projectPlatforms.map((projectPlatform) => (
             <a
               key={projectPlatform.platform.name}
-              className={cn("button-primary flex-center", platformBtnClass)}
+              className={cn(
+                "button-primary flex items-center justify-center",
+                platformBtnClass,
+              )}
               href={projectPlatform.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="inline-flex-gap-1 w-full justify-center h-full">
+              <span className="inline-flex items-center gap-1 w-full justify-center h-full">
                 <Icon
                   icon={projectPlatform.platform.iconName}
-                  className="pm-button-icon-xl"
+                  className="text-xl"
                 />
                 <span>{projectPlatform.platform.label}</span>
-                <Icon icon="mdi:external-link" className="pm-button-icon-xs" />
+                <Icon icon="mdi:external-link" className="text-xs" />
               </span>
             </a>
           ))}

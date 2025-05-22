@@ -4,7 +4,7 @@ import { Icon } from "@iconify-icon/react";
 export const ProjectTechStack = ({ skills }: Pick<Project, "skills">) => {
   return (
     <div className="pm-tech-stack-container">
-      <p className="pm-tech-stack-title">Tech Stack</p>
+      <p className="pm-tech-stack-title text-foreground">Tech Stack</p>
       <div className="pm-tech-stack-icons-container">
         {skills.map((skill) => (
           <span className="pm-tech-stack-icon-wrapper" key={skill.skillName}>

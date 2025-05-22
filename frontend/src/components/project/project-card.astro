@@ -1,6 +1,8 @@
 ---
 import type { Project } from "@/types";
 import { Badge } from "@/components/ui/badge";
+import type { VariantProps } from "class-variance-authority";
+import type { badgeVariants } from "@/components/ui/badge-variants";
 
 interface Props {
   project: Partial<Project>;
@@ -8,31 +10,31 @@ interface Props {
 
 const { project } = Astro.props;
 
-let badgeClass = "";
+let badgeVariant: VariantProps<typeof badgeVariants>["variant"] = "default";
 let badgeLabel = "";
 
 switch (project.state) {
   case "online":
-    badgeClass = "bg-emerald-100 text-emerald-700";
+    badgeVariant = "online";
     badgeLabel = "Online";
     break;
   case "in-progress":
-    badgeClass = "bg-amber-100 text-amber-700";
+    badgeVariant = "in-progress";
     badgeLabel = "In Progress";
     break;
   case "offline":
-    badgeClass = "bg-rose-100 text-rose-700";
+    badgeVariant = "offline";
     badgeLabel = "Offline";
     break;
   default:
-    badgeClass = "bg-gray-200 text-gray-700";
+    badgeVariant = "outline";
     badgeLabel = project.state || "Unknown";
 }
 ---
 
 <div class="card flex flex-col relative">
   <div class="project-status-badge-container">
-    <Badge title={badgeLabel} className={badgeClass}>
+    <Badge title={badgeLabel} variant={badgeVariant}>
       {badgeLabel}
     </Badge>
   </div>
@@ -45,11 +47,11 @@ switch (project.state) {
     <h3 class="text-2xl font-semibold text-primary mb-2">
       {project.name}
     </h3>
-    <p class="text-muted">
+    <p class="text-foreground-muted">
       {project.type}
     </p>
   </span>
-  <p class="text-gray-700 mb-4 flex-grow">
+  <p class="text-foreground mb-4 flex-grow">
     {project.shortDescription}
   </p>
   <!-- Project Modal Slot -->
@@ -72,10 +74,10 @@ switch (project.state) {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
-    color: #fff;
+    color: var(--color-text-on-primary);
     font-weight: 600;
     font-size: 0.875rem;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
     letter-spacing: 0.01em;
     min-width: 2.5rem;
     text-align: center;

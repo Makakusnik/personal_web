@@ -6,7 +6,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-foreground mb-1"
         >
           Full Name
         </label>
@@ -16,13 +16,13 @@ export default function ContactForm() {
           id="name"
           required
           placeholder="Your Name"
-          className="input-field w-full border border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition"
+          className="input-field w-full border placeholder:text-foreground-muted border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition"
         />
       </div>
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-foreground mb-1"
         >
           Email Address
         </label>
@@ -32,13 +32,13 @@ export default function ContactForm() {
           id="email"
           required
           placeholder="you@example.com"
-          className="input-field w-full border border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition"
+          className="input-field w-full border placeholder:text-foreground-muted border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition"
         />
       </div>
       <div>
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-foreground mb-1"
         >
           Message
         </label>
@@ -48,7 +48,7 @@ export default function ContactForm() {
           rows={5}
           required
           placeholder="Your message..."
-          className="input-field w-full border border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition"
+          className="input-field w-full border placeholder:text-foreground-muted border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition"
         ></textarea>
       </div>
       <div>

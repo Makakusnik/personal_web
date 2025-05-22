@@ -18,7 +18,7 @@ export const ProjectInfo = ({
     <div className="pm-info-box">
       <div className="pm-info-box-content">
         <span className="pm-info-text">
-          <p className="pm-info-label">Launched:</p>
+          <p className="font-semibold">Launched:</p>
           <p>
             {launched
               ? new Date(launched).toLocaleDateString(undefined, {
@@ -29,7 +29,7 @@ export const ProjectInfo = ({
           </p>
         </span>
         <span className="pm-info-text">
-          <p className="pm-info-label">Platform:</p>
+          <p className="font-semibold">Platform:</p>
           <p>
             {projectPlatforms
               .map((platform) => platform.platform.label)
@@ -37,15 +37,17 @@ export const ProjectInfo = ({
           </p>
         </span>
         <span className="pm-info-text">
-          <p className="pm-info-label">Open Source:</p>
+          <p className="font-semibold">Open Source:</p>
           <p>{opensource ? "Yes" : "No"}</p>
         </span>
         <span className="pm-info-text">
-          <p className="pm-info-label">License:</p>
+          <p className="font-semibold">License:</p>
           <p>{license}</p>
         </span>
         <span className="pm-info-text">
-          <p className="pm-info-label-nowrap">Languages supported:</p>
+          <p className="font-semibold whitespace-nowrap">
+            Languages supported:
+          </p>
           <p>{languagesSupported}</p>
         </span>
       </div>

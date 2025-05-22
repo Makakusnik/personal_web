@@ -68,7 +68,7 @@ export default function TableOfContents() {
 
   return (
     <div className="fixed top-8 right-8 hidden md:block">
-      <div className="bg-white/40 backdrop-blur-sm p-6 rounded-lg min-w-[240px]">
+      <div className="bg-surface/40 backdrop-blur-sm p-6 rounded-lg min-w-[240px] border border-border">
         <ul className="space-y-4">
           {sections.map(({ id, title }) => (
             <li key={id} className="relative">
@@ -76,18 +76,18 @@ export default function TableOfContents() {
                 <a
                   href={`#${id}`}
                   className={cn(
-                    "block text-lg font-medium transition-colors duration-200 hover:text-sky-600",
+                    "block text-lg font-medium transition-colors duration-200 hover:text-primary-hover",
                     activeSection === id
-                      ? "text-sky-600 font-semibold"
-                      : "text-muted-text",
+                      ? "text-primary font-semibold"
+                      : "text-foreground-muted",
                   )}
                 >
                   {title}
                 </a>
                 <div
                   className={cn(
-                    "flex-1 ml-2 h-[2px] rounded-full bg-gray-300/60",
-                    activeSection === id ? "bg-sky-300/70" : "bg-gray-300/60",
+                    "flex-1 ml-2 h-[2px] rounded-full bg-border/60",
+                    activeSection === id ? "bg-primary/70" : "bg-border/60",
                   )}
                 ></div>
               </div>
