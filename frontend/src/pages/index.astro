@@ -18,6 +18,7 @@ import { getMarkdownParser } from "@/utils/markdownParser";
 import TableOfContents from "@/components/table-of-contents";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import ContactForm from "@/components/contact-form";
+import { Image } from "astro:assets";
 
 const markdownParser = getMarkdownParser();
 
@@ -132,7 +133,14 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
             </div>
           </div>
           <div class="w-1/2 md:w-fit">
-            <img src="/images/marek.webp" alt="Profile" />
+            <Image
+              src="/images/marek.webp"
+              alt="Profile"
+              width={512}
+              height={768}
+              quality={60}
+              loading="eager"
+            />
           </div>
         </div>
       </header>
