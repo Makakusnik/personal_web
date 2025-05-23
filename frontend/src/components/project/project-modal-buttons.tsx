@@ -14,9 +14,9 @@ export const ProjectModalButtons = ({
   if (numPlatforms === 3) platformBtnClass = "w-1/3";
 
   return (
-    <div className="pm-buttons-container">
+    <div className="flex flex-col gap-2 w-full">
       {opensource && githubUrl && (
-        <div className="pm-button-row">
+        <div className="flex w-full">
           <a
             className={cn(
               "button-secondary flex items-center justify-center w-full cursor-pointer",
@@ -25,7 +25,7 @@ export const ProjectModalButtons = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="pm-button-link-content">
+            <span className="inline-flex w-full items-center justify-center gap-2">
               <span>View Repository</span>
               <Icon className="text-2xl" icon="mdi:github" />
             </span>
@@ -33,7 +33,7 @@ export const ProjectModalButtons = ({
         </div>
       )}
       {numPlatforms > 0 && (
-        <div className="pm-button-row-gap-2">
+        <div className="flex w-full gap-2">
           {projectPlatforms.map((projectPlatform) => (
             <a
               key={projectPlatform.platform.name}

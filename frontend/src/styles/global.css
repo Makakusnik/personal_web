@@ -127,7 +127,7 @@ html {
 }
 
 .button-primary {
-  @apply bg-primary text-white py-3 px-6 font-medium transition-colors duration-200 ease-in-out no-underline inline-flex;
+  @apply bg-primary text-white py-3 px-6 font-medium transition-colors duration-200 ease-in-out no-underline inline-flex h-fit;
   border-radius: var(--border-radius);
 }
 .button-primary:hover {
@@ -135,7 +135,7 @@ html {
 }
 
 .button-secondary {
-  @apply bg-secondary text-primary border border-primary py-3 px-6 font-medium transition-colors duration-200 ease-in-out no-underline inline-block;
+  @apply bg-secondary text-primary border border-primary py-3 px-6 font-medium transition-colors duration-200 ease-in-out no-underline inline-flex h-fit;
   border-radius: var(--border-radius);
 }
 .button-secondary:hover {
