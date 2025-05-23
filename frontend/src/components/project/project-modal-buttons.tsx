@@ -38,14 +38,14 @@ export const ProjectModalButtons = ({
             <a
               key={projectPlatform.platform.name}
               className={cn(
-                "button-primary flex items-center justify-center",
+                "button-primary inline-flex items-center justify-center",
                 platformBtnClass,
               )}
               href={projectPlatform.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="inline-flex items-center gap-1 w-full justify-center h-full">
+              <span className="inline-flex w-full items-center justify-center gap-2">
                 <Icon
                   icon={projectPlatform.platform.iconName}
                   className="text-xl"

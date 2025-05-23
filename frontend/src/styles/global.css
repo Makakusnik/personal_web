@@ -127,36 +127,19 @@ html {
 }
 
 .button-primary {
-  background-color: var(--color-primary);
-  color: white;
-  padding: 0.75rem 1.5rem;
+  @apply bg-primary text-white py-3 px-6 font-medium transition-colors duration-200 ease-in-out no-underline inline-block;
   border-radius: var(--border-radius);
-  font-weight: 500;
-  transition: background-color 0.2s ease-in-out;
-  text-decoration: none;
-  display: inline-block;
 }
 .button-primary:hover {
-  background-color: var(--color-primary-hover);
+  @apply bg-primary-hover;
 }
 
 .button-secondary {
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  padding: 0.75rem 1.5rem;
+  @apply bg-secondary text-primary border border-primary py-3 px-6 font-medium transition-colors duration-200 ease-in-out no-underline inline-block;
   border-radius: var(--border-radius);
-  font-weight: 500;
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
-  text-decoration: none;
-  display: inline-block;
 }
-
 .button-secondary:hover {
-  background-color: var(--color-primary);
-  color: white;
+  @apply bg-primary text-white;
 }
 
 span.highlight {
@@ -165,7 +148,7 @@ span.highlight {
 }
 
 .card {
-  background-color: var(--color-surface);
+  @apply bg-surface;
   border-radius: var(--border-radius);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-lg);
@@ -199,24 +182,12 @@ span.highlight {
 }
 
 .skill-badge {
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-  padding: 0.5rem;
+  @apply w-fit flex items-center justify-center bg-background text-primary p-2 font-medium text-sm transition-colors duration-200 ease-in-out;
   border-radius: 9999px;
-  font-weight: 500;
-  font-size: 0.875rem;
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
 }
 
 .skill-badge:hover {
-  background-color: var(--color-background-secondary);
-  color: var(--color-primary-hover);
+  @apply bg-background-secondary text-primary-hover;
 }
 
 /* Markdown Styles */
@@ -246,171 +217,3 @@ span.highlight {
 }
 
 /* Markdown Styles End */
-
-.pm-title {
-  display: flex;
-  align-items: center;
-}
-
-.pm-title-badges {
-  display: inline-flex;
-  margin-left: 0.75rem;
-  gap: 0.125rem;
-}
-
-.pm-image-container {
-  display: flex;
-  gap: 1rem;
-}
-
-.pm-image-wrapper {
-  flex: 1 1 0%;
-}
-
-.pm-image {
-  border-radius: var(--radius-md);
-  width: 100%;
-  max-height: 16rem;
-  object-fit: cover;
-}
-
-.pm-content-layout {
-  display: flex;
-  flex: 1 1 0%;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.pm-info-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex: 1 1 0%;
-}
-
-.pm-description-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 0.5rem;
-}
-
-@media (min-width: 768px) {
-  .pm-description-container {
-    flex-direction: row;
-  }
-}
-
-.pm-description-text-wrapper {
-  flex: 1 1 0%;
-  order: 2;
-}
-
-@media (min-width: 768px) {
-  .pm-description-text-wrapper {
-    order: 1;
-  }
-}
-
-.pm-description-text {
-  display: flex;
-  flex-direction: column;
-  color: var(--color-foreground);
-  width: 100%;
-  gap: 0.5rem;
-}
-
-.pm-tech-stack-container {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 50%;
-  height: 100%;
-}
-
-.pm-tech-stack-title {
-  font-weight: 600;
-  display: inline-flex;
-  gap: 1rem;
-  white-space: nowrap;
-}
-
-.pm-tech-stack-icons-container {
-  padding: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  border-radius: var(--radius-md);
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex: 1 1 0%;
-  flex-wrap: wrap;
-}
-
-.pm-tech-stack-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-secondary / 0.8);
-  padding: 0.5rem;
-  border-radius: var(--radius-md);
-}
-
-.pm-tech-stack-icon-wrapper:hover {
-  background-color: var(--color-secondary);
-}
-
-.pm-tech-stack-icon {
-  font-size: 1.875rem;
-  color: var(--color-primary);
-}
-
-.pm-info-box {
-  flex: 1 1 0%;
-  height: 100%;
-  padding: 0.5rem;
-  background-color: var(--color-background-secondary);
-  border-radius: var(--radius-md);
-}
-
-.pm-info-box-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  gap: 0.25rem;
-}
-
-.pm-info-text {
-  font-size: 0.875rem;
-  color: var(--color-foreground);
-  display: inline-flex;
-  gap: 0.25rem;
-}
-
-.pm-buttons-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.pm-button-row {
-  display: flex;
-  width: 100%;
-}
-
-.pm-button-row-gap-2 {
-  display: flex;
-  width: 100%;
-  gap: 0.5rem;
-}
-
-.pm-button-link-content {
-  display: inline-flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}

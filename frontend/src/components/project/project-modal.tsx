@@ -39,23 +39,23 @@ export default function ProjectModal({
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="pm-title">
+          <DialogTitle className="flex items-center">
             {name}
-            <span className="pm-title-badges">
+            <span className="inline-flex ml-3 gap-0.5">
               <ProjectBadges type={type} state={state} />
             </span>
           </DialogTitle>
-          <div className="pm-image-container">
-            <div className="pm-image-wrapper">
+          <div className="flex gap-4">
+            <div className="flex-1">
               <img
                 src={imagePath}
                 alt={`${name} screenshot.`}
-                className="pm-image"
+                className="rounded-md w-full max-h-64 object-cover"
               />
             </div>
           </div>
-          <div className="pm-content-layout">
-            <div className="pm-info-container">
+          <div className="flex flex-1 flex-col gap-4">
+            <div className="flex items-center gap-4 flex-1">
               <ProjectTechStack skills={skills} />
               <ProjectInfo
                 launched={launched}
@@ -72,10 +72,10 @@ export default function ProjectModal({
             />
           </div>
           <DialogDescription>
-            <span className="pm-description-container">
-              <span className="pm-description-text-wrapper">
+            <span className="flex flex-col gap-4 mt-2 md:flex-row">
+              <span className="flex-1 order-2 md:order-1">
                 <span
-                  className="pm-description-text"
+                  className="flex flex-col text-foreground w-full gap-2"
                   dangerouslySetInnerHTML={{
                     __html: longDescriptionMd,
                   }}
