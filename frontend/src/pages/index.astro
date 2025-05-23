@@ -1,5 +1,4 @@
 ---
-import Button from "@/components/button.astro";
 import "@/styles/global.css";
 import type {
   PersonalInfo,
@@ -97,7 +96,7 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
           client:idle
         />
         <div
-          class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
+          class="container mx-auto px-4 sm:px-6 lg:px-8 flex md:flex-row flex-col items-center justify-between"
         >
           <div class="mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
             <h1
@@ -118,13 +117,11 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
             <div
               class="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col sm:flex-row sm:justify-center md:justify-start"
             >
-              <Button href="#projects" as="a"> View My Work </Button>
-              <Button href="#contact" as="a" variant="secondary">
-                Let's Connect
-              </Button>
+              <a href="#projects" class="button-primary"> View My Work </a>
+              <a href="#contact" class="button-secondary"> Let's Connect </a>
             </div>
           </div>
-          <div>
+          <div class="w-1/2 md:w-fit">
             <img src="/images/marek.webp" alt="Profile" />
           </div>
         </div>

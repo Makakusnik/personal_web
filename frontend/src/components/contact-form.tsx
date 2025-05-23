@@ -54,7 +54,7 @@ export default function ContactForm() {
       <div>
         <button
           type="submit"
-          className="button-primary w-full text-lg disabled:opacity-70"
+          className="button-primary justify-center w-full text-lg disabled:opacity-70"
         >
           Send Message
         </button>
