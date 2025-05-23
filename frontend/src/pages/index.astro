@@ -96,7 +96,7 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
           client:idle
         />
         <div
-          class="container mx-auto px-4 sm:px-6 lg:px-8 flex md:flex-row flex-col items-center justify-between"
+          class="container mx-auto px-4 sm:px-6 lg:px-8 flex md:flex-row flex-col items-center justify-between gap-y-12"
         >
           <div class="mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
             <h1
@@ -115,10 +115,20 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
               {personalInfoData.shortDescription}
             </p>
             <div
-              class="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col sm:flex-row sm:justify-center md:justify-start"
+              class="gap-x-4 flex flex-col sm:flex-row gap-y-4 justify-center md:justify-start"
             >
-              <a href="#projects" class="button-primary"> View My Work </a>
-              <a href="#contact" class="button-secondary"> Let's Connect </a>
+              <a
+                href="#projects"
+                class="button-primary block! sm:inline-flex text-center"
+              >
+                View My Work
+              </a>
+              <a
+                href="#contact"
+                class="button-secondary block! sm:inline-flex text-center"
+              >
+                Let's Connect
+              </a>
             </div>
           </div>
           <div class="w-1/2 md:w-fit">
