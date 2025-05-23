@@ -19,6 +19,7 @@ import TableOfContents from "@/components/table-of-contents";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import ContactForm from "@/components/contact-form";
 import { Image } from "astro:assets";
+import marek from "../assets/marek.webp";
 
 const markdownParser = getMarkdownParser();
 
@@ -86,7 +87,7 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
     <div class="flex flex-col min-h-screen">
       <header
         id="intro"
-        class="section-padding flex items-center min-h-[calc(100vh-5rem)] relative overflow-hidden isolate"
+        class="section-padding flex items-center min-h-screen relative overflow-hidden isolate"
       >
         <GridPattern
           width={80}
