@@ -3,6 +3,7 @@ import type { Project } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import type { VariantProps } from "class-variance-authority";
 import type { badgeVariants } from "@/components/ui/badge-variants";
+import ProjectModalTrigger from "./project-modal-trigger.tsx";
 
 interface Props {
   project: Partial<Project>;
@@ -54,9 +55,8 @@ switch (project.state) {
   <p class="text-foreground mb-4 flex-grow">
     {project.shortDescription}
   </p>
-  <!-- Project Modal Slot -->
-  <slot />
-  <!-- Project Modal Slot -->
+
+  <ProjectModalTrigger client:load project={project as Project} />
 </div>
 
 <style>

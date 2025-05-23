@@ -5,7 +5,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { ProjectBadges } from "./project-badges";
 import { ProjectInfo } from "./project-info";
@@ -14,6 +13,8 @@ import { ProjectTechStack } from "./project-tech-stack";
 
 interface Props {
   project: Project;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 export default function ProjectModal({
@@ -31,12 +32,11 @@ export default function ProjectModal({
     opensource,
     license,
   },
+  open,
+  onOpenChange,
 }: Props) {
   return (
-    <Dialog>
-      <DialogTrigger className="button-secondary mt-auto self-start">
-        View Details
-      </DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="flex items-center">
@@ -55,7 +55,7 @@ export default function ProjectModal({
             </div>
           </div>
           <div className="flex flex-1 flex-col gap-4">
-            <div className="flex items-center gap-4 flex-1">
+            <div className="flex gap-4 flex-1 flex-col sm:flex-row">
               <ProjectTechStack skills={skills} />
               <ProjectInfo
                 launched={launched}
@@ -73,7 +73,7 @@ export default function ProjectModal({
           </div>
           <DialogDescription>
             <span className="flex flex-col gap-4 mt-2 md:flex-row">
-              <span className="flex-1 order-2 md:order-1">
+              <span className="flex-1">
                 <span
                   className="flex flex-col text-foreground w-full gap-2"
                   dangerouslySetInnerHTML={{

@@ -15,6 +15,9 @@ export const ProjectTechStack = ({ skills }: Pick<Project, "skills">) => {
           >
             <Icon
               className="text-3xl text-primary"
+              width={24}
+              height={24}
+              noobserver={true}
               title={skill.skillName}
               icon={skill.iconName}
             />
