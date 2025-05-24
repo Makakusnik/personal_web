@@ -529,6 +529,7 @@ export interface ApiPersonalInfoPersonalInfo extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     firstName: Schema.Attribute.String;
+    headshot: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     lastName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -629,6 +630,10 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    full_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     githubUrl: Schema.Attribute.String;
     imagePath: Schema.Attribute.String;
     languagesSupported: Schema.Attribute.String;
@@ -648,6 +653,9 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
         };
       }>;
     opensource: Schema.Attribute.Boolean;
+    preview_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     projectPlatforms: Schema.Attribute.Relation<
       'oneToMany',
       'api::project-platform.project-platform'
