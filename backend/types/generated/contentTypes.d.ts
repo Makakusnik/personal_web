@@ -630,10 +630,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    full_image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    fullImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     githubUrl: Schema.Attribute.String;
     imagePath: Schema.Attribute.String;
     languagesSupported: Schema.Attribute.String;
@@ -653,7 +650,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
         };
       }>;
     opensource: Schema.Attribute.Boolean;
-    preview_image: Schema.Attribute.Media<
+    previewImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
     projectPlatforms: Schema.Attribute.Relation<
