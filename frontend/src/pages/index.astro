@@ -58,10 +58,26 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
-    <script
-      defer
-      src={import.meta.env.UMAMI_SCRIPT_URL + "/script.js"}
-      data-website-id={import.meta.env.UMAMI_WEBSITE_ID}></script>
+    <!-- Umami analytics -->
+    {
+      import.meta.env.UMAMI_WEBSITE_ID && (
+        <script
+          defer
+          src={import.meta.env.UMAMI_SCRIPT_URL + "/script.js"}
+          data-website-id={import.meta.env.UMAMI_WEBSITE_ID}
+        />
+      )
+    }
+    <!-- Cloudflare Web Analytics -->
+    {
+      import.meta.env.CLOUDFLARE_ANALYTICS_TOKEN && (
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${import.meta.env.CLOUDFLARE_ANALYTICS_TOKEN}"}`}
+        />
+      )
+    }
     <script is:inline>
       if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         document.documentElement.classList.add("dark");
