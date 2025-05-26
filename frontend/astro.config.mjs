@@ -11,6 +11,13 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-
+  image: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cms.marekus.eu",
+      },
+    ],
+  },
   integrations: [react(), icon()],
 });
