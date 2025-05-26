@@ -22,7 +22,7 @@ import { getImage, Image } from "astro:assets";
 const markdownParser = getMarkdownParser();
 
 const { data: personalInfoData } = await strapiFetch<PersonalInfo, false>(
-  `/personal-info`,
+  `/personal-info?populate=*`,
 );
 
 const markdownString = markdownParser.parse(personalInfoData.longDescriptionMd);
@@ -34,9 +34,8 @@ const { data: jobExperienceData } = await strapiFetch<JobExperience>(
 const { data: skillData } = await strapiFetch<Skill>(`/skills`);
 
 const { data: projectData } = await strapiFetch<Project>(
-  `/projects?populate[projectPlatforms][populate][platform]=*&populate[skills]=*`,
+  `/projects?populate[skills]=*&populate[projectPlatforms][populate]=*&populate[fullImage][populate]=*&populate[previewImage][populate]=*`,
 );
-
 const parsedProjectData = await Promise.all(
   projectData?.map(async (project) => {
     let fullImageAstro = null;
@@ -165,11 +164,12 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
           </div>
           <div class="w-1/2 md:w-fit">
             <Image
-              src="/images/marek.webp"
-              alt="Profile"
-              width={512}
-              height={768}
-              quality={60}
+              src={personalInfoData.headshot.url}
+              alt={personalInfoData.headshot.alternativeText}
+              width={personalInfoData.headshot.width}
+              height={personalInfoData.headshot.height}
+              quality={"mid"}
+              format={"webp"}
               loading="eager"
             />
           </div>
