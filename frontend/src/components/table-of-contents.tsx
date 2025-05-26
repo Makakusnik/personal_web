@@ -67,9 +67,9 @@ export default function TableOfContents() {
   }, [sections, activeSection]);
 
   return (
-    <div className="fixed top-8 right-8 hidden md:block">
-      <div className="bg-surface/40 backdrop-blur-sm p-6 rounded-lg min-w-[240px] border border-border">
-        <ul className="space-y-4">
+    <div className="fixed top-8 right-8 hidden lg:block">
+      <div className="bg-surface/10 backdrop-blur-xs p-2 rounded-lg min-w-[160px] border border-border/20">
+        <ul className="flex flex-col gap-y-2">
           {sections.map(({ id, title }) => (
             <li key={id} className="relative">
               <div className="flex items-center">

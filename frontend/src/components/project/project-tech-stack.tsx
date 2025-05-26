@@ -12,13 +12,13 @@ export const ProjectTechStack = ({ skills }: Pick<Project, "skills">) => {
           <span
             className="flex items-center justify-center bg-secondary/80 p-2 rounded-md hover:bg-secondary"
             key={skill.skillName}
+            title={skill.skillName}
           >
             <Icon
               className="text-3xl text-primary"
               width={24}
               height={24}
               noobserver={true}
-              title={skill.skillName}
               icon={skill.iconName}
             />
           </span>

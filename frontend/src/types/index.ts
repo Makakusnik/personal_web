@@ -6,17 +6,14 @@ export interface Contact {
   hrefValue: string;
 }
 
-export type JobRole = "fe" | "be" | "fe/be";
-
 export interface JobExperience {
   company: string;
-  role: JobRole;
+  role: string;
   isCurrentJob: boolean;
   shortDescriptionMd: string;
   startDate: Date;
   endDate?: Date;
   companyFullName: string;
-  roleFullText: string;
 }
 
 export type Platform = {
