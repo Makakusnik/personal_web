@@ -6,6 +6,7 @@ interface ImportMetaEnv {
   readonly WEB_URL: string;
   readonly UMAMI_SCRIPT_URL: string;
   readonly UMAMI_WEBSITE_ID: string;
+  readonly CLOUDFLARE_ANALYTICS_TOKEN: string;
 }
 
 interface ImportMeta {
