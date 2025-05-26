@@ -40,15 +40,26 @@ switch (project.state) {
       {badgeLabel}
     </Badge>
   </div>
-  <Image
-    src={project.imagePath || ""}
-    alt={`${project.name} preview.`}
-    class="rounded-md mb-4 w-full h-48 object-cover"
-    width={450}
-    height={225}
-    quality={60}
-    loading="lazy"
-  />
+  {
+    project.previewImage ? (
+      <Image
+        src={project.previewImage.url}
+        alt={project.previewImage.alternativeText}
+        width={project.previewImage.width}
+        height={project.previewImage.height}
+        quality={"high"}
+        format={"webp"}
+        loading="eager"
+        class="rounded-md mb-4 w-full h-48 object-cover"
+      />
+    ) : (
+      <img
+        src={"/images/under_construction_preview.webp"}
+        alt={"Project under construction."}
+        class="rounded-md mb-4 w-full h-48 object-cover"
+      />
+    )
+  }
   <span class="flex gap-2 items-baseline">
     <h3 class="text-2xl font-semibold text-primary mb-2">
       {project.name}

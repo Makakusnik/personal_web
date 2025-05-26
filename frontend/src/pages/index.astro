@@ -13,13 +13,11 @@ import { formatDate } from "@/utils/date";
 import SkillBadge from "@/components/skill-badge.astro";
 import ProjectCard from "@/components/project/project-card.astro";
 import ProjectModal from "@/components/project/project-modal";
-import { buildImageUrl } from "@/utils/images";
 import { getMarkdownParser } from "@/utils/markdownParser";
 import TableOfContents from "@/components/table-of-contents";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import ContactForm from "@/components/contact-form";
-import { Image } from "astro:assets";
-import marek from "../assets/marek.webp";
+import { getImage, Image } from "astro:assets";
 
 const markdownParser = getMarkdownParser();
 
@@ -40,12 +38,28 @@ const { data: projectData } = await strapiFetch<Project>(
 );
 
 const parsedProjectData = await Promise.all(
-  projectData?.map(async (project) => ({
-    ...project,
-    longDescriptionMd: project?.longDescriptionMd
-      ? await markdownParser.parse(project.longDescriptionMd)
-      : "",
-  })),
+  projectData?.map(async (project) => {
+    let fullImageAstro = null;
+    if (project.fullImage?.url) {
+      fullImageAstro = await getImage({
+        src: project.fullImage.url,
+        alt: project.fullImage.alternativeText,
+        width: project.fullImage.width,
+        height: project.fullImage.height,
+        quality: "high",
+        format: "webp",
+        loading: "eager",
+      });
+    }
+
+    return {
+      ...project,
+      fullImageOptions: fullImageAstro,
+      longDescriptionMd: project?.longDescriptionMd
+        ? await markdownParser.parse(project.longDescriptionMd)
+        : "",
+    };
+  }),
 );
 
 const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
@@ -184,7 +198,7 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
                 jobExperienceData &&
                   jobExperienceData.map((job) => (
                     <JobExperienceCard
-                      roleFullText={job.roleFullText}
+                      role={job.role}
                       companyFullName={job.companyFullName}
                       company={job.company}
                       startDate={formatDate(job.startDate)}
@@ -229,23 +243,8 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
               {
                 parsedProjectData &&
                   parsedProjectData.map((project, index) => (
-                    <ProjectCard
-                      project={{
-                        ...project,
-                        imagePath: project.imagePath
-                          ? buildImageUrl(`${project.imagePath}_preview.webp`)
-                          : buildImageUrl("under_construction_preview.webp"),
-                      }}
-                    >
-                      <ProjectModal
-                        client:load
-                        project={{
-                          ...project,
-                          imagePath: project.imagePath
-                            ? buildImageUrl(`${project.imagePath}_full.webp`)
-                            : buildImageUrl("under_construction_full.webp"),
-                        }}
-                      />
+                    <ProjectCard project={project}>
+                      <ProjectModal client:load project={project} />
                     </ProjectCard>
                   ))
               }

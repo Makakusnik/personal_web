@@ -10,9 +10,10 @@ import { ProjectBadges } from "./project-badges";
 import { ProjectInfo } from "./project-info";
 import { ProjectModalButtons } from "./project-modal-buttons";
 import { ProjectTechStack } from "./project-tech-stack";
+import type { GetImageResult } from "astro";
 
 interface Props {
-  project: Project;
+  project: Project & { fullImageOptions: GetImageResult | null };
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
 }
@@ -24,7 +25,8 @@ export default function ProjectModal({
     state,
     githubUrl,
     longDescriptionMd,
-    imagePath,
+    fullImage,
+    fullImageOptions,
     skills,
     launched,
     projectPlatforms,
@@ -47,11 +49,21 @@ export default function ProjectModal({
           </DialogTitle>
           <div className="flex gap-4">
             <div className="flex-1">
-              <img
-                src={imagePath}
-                alt={`${name} screenshot.`}
-                className="rounded-md w-full max-h-64 object-cover"
-              />
+              {fullImageOptions && fullImage ? (
+                <img
+                  src={fullImageOptions.src}
+                  alt={fullImage?.alternativeText || ""}
+                  width={fullImageOptions.options.width}
+                  height={fullImageOptions.options.height}
+                  loading="eager"
+                />
+              ) : (
+                <img
+                  src={"/images/under_construction_full.webp"}
+                  alt={"Project under construction."}
+                  className="rounded-md w-full max-h-64 object-cover"
+                />
+              )}
             </div>
           </div>
           <div className="flex flex-1 flex-col gap-4">

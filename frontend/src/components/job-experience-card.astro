@@ -2,13 +2,13 @@
 import { marked } from "marked";
 import type { JobExperience } from "../types";
 
-interface Props extends Omit<JobExperience, "startDate" | "endDate" | "role"> {
+interface Props extends Omit<JobExperience, "startDate" | "endDate"> {
   startDate: string;
   endDate: string;
 }
 
 const {
-  roleFullText,
+  role,
   companyFullName,
   company,
   startDate,
@@ -18,9 +18,9 @@ const {
 } = Astro.props;
 ---
 
-<div class:list={["card", isCurrentJob && "highlight"]}>
+<div class:list={["card h-fit", isCurrentJob && "highlight"]}>
   <h3 class="text-2xl font-semibold text-primary mb-1">
-    {roleFullText}
+    {role}
   </h3>
   <p class="text-md text-foreground-muted mb-2">
     <span class="font-semibold text-foreground" title={companyFullName}>
