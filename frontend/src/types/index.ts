@@ -1,3 +1,5 @@
+import type { StrapiImage } from "@/types/api";
+
 export interface Contact {
   label: string;
   iconName: string;
@@ -44,6 +46,8 @@ export interface Project {
   state: ProjectState;
   longDescriptionMd: string;
   imagePath: string;
+  fullImage: StrapiImage;
+  previewImage: StrapiImage;
 }
 
 export interface Skill {
@@ -60,4 +64,5 @@ export interface PersonalInfo {
   location: string;
   locationLatitude: string;
   locationLongitude: string;
+  headshot: StrapiImage;
 }
