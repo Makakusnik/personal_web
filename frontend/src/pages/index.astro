@@ -185,12 +185,14 @@ const { data: metaData } = await strapiFetch<MetaData, false>(
               <a
                 href="#projects"
                 class="button-primary block! sm:inline-flex text-center"
+                data-umami-event="hero-view-work"
               >
                 View My Work
               </a>
               <a
                 href="#contact"
                 class="button-secondary block! sm:inline-flex text-center"
+                data-umami-event="hero-lets-connect"
               >
                 Let's Connect
               </a>
@@ -303,13 +305,15 @@ const { data: metaData } = await strapiFetch<MetaData, false>(
               href="https://astro.build/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-primary hover:underline">Astro</a
+              class="text-primary hover:underline"
+              data-umami-event="footer-astro-link">Astro</a
             >,
             <a
               href="https://react.dev/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-primary hover:underline">React</a
+              class="text-primary hover:underline"
+              data-umami-event="footer-react-link">React</a
             > & ❤️
           </p>
         </div>

@@ -80,6 +80,7 @@ export default function ProjectModal({
             <ProjectModalButtons
               opensource={opensource}
               githubUrl={githubUrl}
+              name={name}
               projectPlatforms={projectPlatforms}
             />
           </div>

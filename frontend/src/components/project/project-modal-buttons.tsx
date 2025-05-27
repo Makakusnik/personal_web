@@ -3,10 +3,11 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@iconify-icon/react";
 
 export const ProjectModalButtons = ({
+  name,
   opensource,
   githubUrl,
   projectPlatforms,
-}: Pick<Project, "opensource" | "githubUrl" | "projectPlatforms">) => {
+}: Pick<Project, "opensource" | "githubUrl" | "projectPlatforms" | "name">) => {
   const numPlatforms = projectPlatforms.length;
   const hasRepo = opensource && githubUrl;
   const totalButtons = numPlatforms + (hasRepo ? 1 : 0);
@@ -33,6 +34,7 @@ export const ProjectModalButtons = ({
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
+            data-umami-event={`project-${name}-github-link`}
           >
             <span className="inline-flex w-full items-center justify-center gap-2">
               <span className="whitespace-nowrap">View Repository</span>
@@ -46,6 +48,7 @@ export const ProjectModalButtons = ({
                 href={projectPlatforms[0].url}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-umami-event={`project-${name}-platform-${projectPlatforms[0].platform.name.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 <span className="inline-flex w-full items-center justify-center gap-2">
                   <Icon
@@ -89,6 +92,7 @@ export const ProjectModalButtons = ({
                 href={projectPlatform.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-umami-event={`project-${name}-platform-${projectPlatform.platform.name.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 <span className="inline-flex w-full items-center justify-center gap-2">
                   <Icon

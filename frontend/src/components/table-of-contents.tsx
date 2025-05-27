@@ -81,6 +81,7 @@ export default function TableOfContents() {
                       ? "text-primary font-semibold"
                       : "text-foreground-muted",
                   )}
+                  data-umami-event={`table-of-contents-nav-${id}`}
                 >
                   {title}
                 </a>

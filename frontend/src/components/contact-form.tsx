@@ -109,6 +109,7 @@ export default function ContactForm({
               <button
                 onClick={() => setMessage(null)}
                 className="button-secondary px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition-colors"
+                data-umami-event="contact-form-close-message"
               >
                 Close
               </button>
@@ -205,6 +206,7 @@ export default function ContactForm({
                 type="submit"
                 disabled={isSubmitting}
                 className="button-primary justify-center w-full text-lg disabled:opacity-70"
+                data-umami-event="contact-form-submit"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
@@ -222,6 +224,7 @@ export default function ContactForm({
                   className="text-primary hover:text-primary-hover transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-umami-event={`contact-link-${contact.label.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   {contact.label}
                 </a>

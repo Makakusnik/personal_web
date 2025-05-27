@@ -1,8 +1,13 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import ProjectModal from "./project-modal";
 import type { Project } from "@/types";
+import type { GetImageResult } from "astro";
 
-export default function ProjectModalTrigger({ project }: { project: Project }) {
+export default function ProjectModalTrigger({
+  project,
+}: {
+  project: Project & { fullImageOptions: GetImageResult };
+}) {
   const [open, setOpen] = useState(false);
   const dialogHash = `#dialog-open-${project.name.toLowerCase().replace(/\s+/g, "-")}`;
   const originalPathRef = useRef("");
@@ -92,6 +97,7 @@ export default function ProjectModalTrigger({ project }: { project: Project }) {
         type="button"
         className="button-secondary mt-auto self-start"
         onClick={openDialog}
+        data-umami-event={`project-${project.name}-view-details`}
       >
         View Details
       </button>
