@@ -1,5 +1,30 @@
 import type { StrapiImage } from "@/types/api";
 
+export interface MetaData {
+  author: string;
+  description: string;
+  title: string;
+  keywords: string;
+  robots: string;
+  canonical: string;
+  themeColor: string;
+
+  // OG tags
+  ogTitle: string;
+  ogDescription: string;
+  ogImage: StrapiImage;
+  ogUrl: string;
+  ogLocale: string;
+  ogType: string;
+
+  // Twitter tags
+  twitterTitle: string;
+  twitterDescription: string;
+  twitterImage: StrapiImage;
+  twitterCard: string;
+  twitterSite: string;
+}
+
 export interface Contact {
   label: string;
   iconName: string;

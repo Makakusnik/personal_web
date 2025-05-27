@@ -6,6 +6,7 @@ import type {
   Skill,
   Project,
   Contact,
+  MetaData,
 } from "@/types";
 import { strapiFetch } from "@/utils/fetching";
 import JobExperienceCard from "@/components/job-experience-card.astro";
@@ -62,15 +63,48 @@ const parsedProjectData = await Promise.all(
 );
 
 const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
+
+const { data: metaData } = await strapiFetch<MetaData, false>(
+  `/metadata?populate=*`,
+);
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+
+    <!-- MetaData -->
+    <meta name="author" content={metaData.author} />
+    <meta name="description" content={metaData.description} />
+    <meta name="keywords" content={metaData.keywords} />
+    <meta name="theme-color" content={metaData.themeColor} />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:title" content={metaData.ogTitle} />
+    <meta property="og:description" content={metaData.ogDescription} />
+    <meta property="og:type" content={metaData.ogType} />
+    <meta property="og:url" content={metaData.ogUrl} />
+    <meta property="og:image" content={metaData.ogImage.url} />
+    <meta property="og:image:alt" content={metaData.ogImage.alternativeText} />
+    <meta property="og:locale" content={metaData.ogLocale} />
+
+    <meta name="twitter:card" content={metaData.twitterCard} />
+    <meta name="twitter:site" content={metaData.twitterSite} />
+    <meta name="twitter:title" content={metaData.twitterTitle} />
+    <meta name="twitter:description" content={metaData.twitterDescription} />
+    <meta name="twitter:image" content={metaData.twitterImage.url} />
+    <meta
+      name="twitter:image:alt"
+      content={metaData.twitterImage.alternativeText}
+    />
+
+    <title>{metaData.title}</title>
     <!-- Umami analytics -->
     {
       import.meta.env.UMAMI_WEBSITE_ID && (
