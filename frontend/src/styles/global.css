@@ -53,7 +53,7 @@
 }
 
 .dark {
-  --color-primary: var(--color-sky-400);
+  --color-primary: var(--color-sky-600);
   --color-primary-hover: var(--color-sky-300);
   --color-secondary: var(--color-gray-800);
   --color-secondary-hover: var(--color-gray-700);

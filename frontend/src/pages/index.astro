@@ -198,7 +198,7 @@ const { data: metaData } = await strapiFetch<MetaData, false>(
               </a>
             </div>
           </div>
-          <div class="w-1/2 md:w-fit">
+          <div class="w-1/3 md:w-1/4">
             <Image
               src={personalInfoData.headshot.url}
               alt={personalInfoData.headshot.alternativeText}
@@ -293,7 +293,7 @@ const { data: metaData } = await strapiFetch<MetaData, false>(
       </main>
       <footer class="py-8 border-t border-border bg-secondary">
         <div
-          class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-foreground-muted"
+          class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-foreground"
         >
           <p class="font-semibold">
             &copy; {new Date().getFullYear()}
@@ -305,15 +305,15 @@ const { data: metaData } = await strapiFetch<MetaData, false>(
               href="https://astro.build/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-primary hover:underline"
-              data-umami-event="footer-astro-link">Astro</a
+              class="text-foreground hover:text-primary hover:underline"
+              >Astro</a
             >,
             <a
               href="https://react.dev/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-primary hover:underline"
-              data-umami-event="footer-react-link">React</a
+              class="text-foreground hover:text-primary hover:underline"
+              >React</a
             > & ❤️
           </p>
         </div>

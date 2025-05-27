@@ -78,7 +78,7 @@ export default function TableOfContents() {
                   className={cn(
                     "block text-lg font-medium transition-colors duration-200 hover:text-primary-hover",
                     activeSection === id
-                      ? "text-primary font-semibold"
+                      ? "text-primary"
                       : "text-foreground-muted",
                   )}
                   data-umami-event={`table-of-contents-nav-${id}`}
