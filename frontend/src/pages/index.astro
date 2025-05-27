@@ -252,38 +252,7 @@ const { data: contactData } = await strapiFetch<Contact>(`/contacts`);
           </div>
         </section>
         <section id="contact" class="section-padding">
-          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12">
-              Let's Get In Touch
-            </h2>
-            <div
-              class="max-w-lg mx-auto card hover:transform-none! !shadow-none border border-border p-6 md:p-8"
-            >
-              <p class="text-center text-foreground mb-8">
-                Have a project in mind, a question, or just want to say hi? Fill
-                out the form below or reach out via my socials.
-              </p>
-              <ContactForm client:load />
-              <div class="mt-10 text-center">
-                <p class="text-foreground-muted mb-2">Or find me on:</p>
-                <div class="flex justify-center space-x-4">
-                  {
-                    contactData &&
-                      contactData.map((contact) => (
-                        <a
-                          href={contact.hrefValue}
-                          class="text-primary hover:text-primary-hover transition-colors"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {contact.label}
-                        </a>
-                      ))
-                  }
-                </div>
-              </div>
-            </div>
-          </div>
+          <ContactForm client:load contactData={contactData} />
         </section>
       </main>
       <footer class="py-8 border-t border-border bg-secondary">
