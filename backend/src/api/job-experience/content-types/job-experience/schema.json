@@ -25,15 +25,6 @@
         }
       }
     },
-    "role": {
-      "type": "enumeration",
-      "enum": [
-        "fe",
-        "be",
-        "fe/be"
-      ],
-      "required": true
-    },
     "isCurrentJob": {
       "type": "boolean",
       "default": false,
@@ -55,24 +46,11 @@
         }
       }
     },
-    "roleFullText": {
-      "type": "enumeration",
-      "enum": [
-        "Frontend vývojár",
-        "Backend vývojár",
-        "Fullstack vývojár",
-        "Frontend developer",
-        "Backend developer",
-        "Fullstack developer"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "shortDescriptionMd": {
       "type": "richtext"
+    },
+    "role": {
+      "type": "string"
     }
   }
 }

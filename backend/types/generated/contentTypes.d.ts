@@ -448,23 +448,7 @@ export interface ApiJobExperienceJobExperience
       'api::job-experience.job-experience'
     >;
     publishedAt: Schema.Attribute.DateTime;
-    role: Schema.Attribute.Enumeration<['fe', 'be', 'fe/be']> &
-      Schema.Attribute.Required;
-    roleFullText: Schema.Attribute.Enumeration<
-      [
-        'Frontend v\u00FDvoj\u00E1r',
-        'Backend v\u00FDvoj\u00E1r',
-        'Fullstack v\u00FDvoj\u00E1r',
-        'Frontend developer',
-        'Backend developer',
-        'Fullstack developer',
-      ]
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    role: Schema.Attribute.String;
     shortDescriptionMd: Schema.Attribute.RichText;
     startDate: Schema.Attribute.Date & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -506,6 +490,52 @@ export interface ApiLocalizationLocalization extends Struct.SingleTypeSchema {
       'api::localization.localization'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMetadataMetadata extends Struct.SingleTypeSchema {
+  collectionName: 'metadatas';
+  info: {
+    displayName: 'Metadata';
+    pluralName: 'metadatas';
+    singularName: 'metadata';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    canonical: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::metadata.metadata'
+    > &
+      Schema.Attribute.Private;
+    ogDescription: Schema.Attribute.String;
+    ogImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    ogLocale: Schema.Attribute.String;
+    ogTitle: Schema.Attribute.String;
+    ogType: Schema.Attribute.String;
+    ogUrl: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    robots: Schema.Attribute.String;
+    themeColor: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    twitterCard: Schema.Attribute.String;
+    twitterDescription: Schema.Attribute.String;
+    twitterImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    twitterSite: Schema.Attribute.String;
+    twitterTitle: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1218,6 +1248,7 @@ declare module '@strapi/strapi' {
       'api::contact.contact': ApiContactContact;
       'api::job-experience.job-experience': ApiJobExperienceJobExperience;
       'api::localization.localization': ApiLocalizationLocalization;
+      'api::metadata.metadata': ApiMetadataMetadata;
       'api::personal-info.personal-info': ApiPersonalInfoPersonalInfo;
       'api::platform.platform': ApiPlatformPlatform;
       'api::project-platform.project-platform': ApiProjectPlatformProjectPlatform;
