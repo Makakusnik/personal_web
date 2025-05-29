@@ -23,7 +23,10 @@ const {
     {role}
   </h3>
   <p class="text-md text-foreground-muted mb-2">
-    <span class="font-semibold text-foreground" title={companyFullName}>
+    <span
+      class="font-semibold text-foreground"
+      title={company === companyFullName ? undefined : companyFullName}
+    >
       {company}
     </span>
     | {startDate} -

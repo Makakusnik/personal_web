@@ -83,7 +83,7 @@ function DialogContent({
       <DialogPanel
         data-slot="dialog-content"
         className={cn(
-          "bg-background w-full md:max-w-4xl p-4 sm:p-6 md:rounded-lg border border-border shadow-lg grid gap-4 relative overflow-y-auto max-h-full md:max-h-[90vh]",
+          "bg-background w-full md:max-w-4xl p-4 sm:p-6 md:rounded-xs border border-border shadow-lg grid gap-4 relative overflow-y-auto max-h-full md:max-h-[90vh]",
           className,
         )}
         {...props}
